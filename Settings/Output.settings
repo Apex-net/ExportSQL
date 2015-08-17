@@ -1,0 +1,48 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ExportSQL.Settings" GeneratedClassName="Output">
+  <Profiles />
+  <Settings>
+    <Setting Name="DirectoryName_Functions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Functions</Value>
+    </Setting>
+    <Setting Name="DirectoryName_Procedures" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Procedures</Value>
+    </Setting>
+    <Setting Name="DirectoryName_Triggers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Triggers</Value>
+    </Setting>
+    <Setting Name="DirectoryName_Views" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Views</Value>
+    </Setting>
+    <Setting Name="FileName_FunctionsType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Functions.fnc</Value>
+    </Setting>
+    <Setting Name="FileName_ProceduresType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Procedures.prc</Value>
+    </Setting>
+    <Setting Name="FileName_TriggersType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Triggers.trg</Value>
+    </Setting>
+    <Setting Name="FileName_ViewsType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Views.vw</Value>
+    </Setting>
+    <Setting Name="FileName_SingleFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ExportSQL.sql</Value>
+    </Setting>
+    <Setting Name="TextEndOfFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">End of file</Value>
+    </Setting>
+    <Setting Name="TitleFunctions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Elenco Funzioni</Value>
+    </Setting>
+    <Setting Name="TitleProcedures" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Elenco Procedure</Value>
+    </Setting>
+    <Setting Name="TitleTriggers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Elenco Trigger</Value>
+    </Setting>
+    <Setting Name="TitleViews" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Elenco Viste</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

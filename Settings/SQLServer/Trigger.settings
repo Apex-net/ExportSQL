@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ExportSQL.Settings.SQLServer" GeneratedClassName="Trigger">
+  <Profiles />
+  <Settings>
+    <Setting Name="Regex" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^&gt;&gt;(?&lt;DropStatement&gt;drop trigger (?&lt;Name&gt;\w+)) \|.*?^(?&lt;CreateStatement&gt;create trigger .*?^end) \|\r\n</Value>
+    </Setting>
+    <Setting Name="CreateSearch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">create trigger</Value>
+    </Setting>
+    <Setting Name="CreateReplace" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CreateEnding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">go</Value>
+    </Setting>
+    <Setting Name="DropEnding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">go</Value>
+    </Setting>
+    <Setting Name="DropReplace" Type="System.String" Scope="User">
+      <Value Profile="(Default)">IF  EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID('{OBJECT_NAME}'))</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

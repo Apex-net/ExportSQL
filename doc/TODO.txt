@@ -1,0 +1,29 @@
+﻿--------------------------------------------------------------------------------
+                                    BUGS
+--------------------------------------------------------------------------------
+
+001: If 'Other' input type is selected db items won't be extracted even if every
+     settings is in place. Probabily something is not good enough about regexes.
+
+
+
+--------------------------------------------------------------------------------
+                                    TODO
+--------------------------------------------------------------------------------
+
+002: Before actually running the last step show user a summary of what's being
+     selected and what will program do if next button is clicked
+
+
+
+--------------------------------------------------------------------------------
+                                    DONE
+--------------------------------------------------------------------------------
+
+000: Run from command line (s.teodorani)
+
+
+
+--------------------------------------------------------------------------------
+# Last-Item: 002
+# End of file

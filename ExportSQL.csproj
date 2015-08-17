@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3ECF0C40-0E9C-4ACC-9CEA-7FF9A998DF66}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExportSQL</RootNamespace>
+    <AssemblyName>ExportSQL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>7F9039BEAF18FF5DE85B583C428D17D0DC85BB76</ManifestCertificateThumbprint>
+    <ManifestKeyFile>ExportSQL_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <StartupObject>ExportSQL.Program</StartupObject>
+    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\a.donmez\Desktop\ExportSQL-publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ProductName>ExportSQL</ProductName>
+    <PublisherName>Apex-net S.r.l.</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.5.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraWizard.v14.1, Version=14.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandLine.cs" />
+    <Compile Include="DBObject.cs" />
+    <Compile Include="DBTypeManagement.cs" />
+    <Compile Include="ExportSQL.cs" />
+    <Compile Include="ObjectExtraction.cs" />
+    <Compile Include="Settings\Oracle\Function.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Function.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\General.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>General.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Output.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Output.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Oracle\Procedure.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Procedure.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Oracle\Trigger.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Trigger.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Oracle\View.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>View.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SQLServer\Function.Designer.cs">
+      <DependentUpon>Function.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings\SQLServer\Procedure.Designer.cs">
+      <DependentUpon>Procedure.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings\SQLServer\Trigger.Designer.cs">
+      <DependentUpon>Trigger.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings\SQLServer\View.Designer.cs">
+      <DependentUpon>View.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Structures.cs" />
+    <Compile Include="WizardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WizardForm.Designer.cs">
+      <DependentUpon>WizardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WizardForm.resx">
+      <DependentUpon>WizardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Settings\Oracle\Function.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Function.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\General.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>General.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\Output.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Output.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\Oracle\Procedure.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Procedure.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\Oracle\Trigger.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Trigger.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\Oracle\View.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>View.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\SQLServer\Function.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Function.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\SQLServer\Procedure.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Procedure.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\SQLServer\Trigger.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Trigger.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings\SQLServer\View.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>View.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="doc\TODO.txt" />
+    <Content Include="Images\monkey.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="doc\TODO.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
