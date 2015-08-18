@@ -1,19 +1,20 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Windows.Forms;
-using DevExpress.XtraWizard;
-
-namespace ExportSQL
+﻿namespace ExportSQL
 {
+    using System;
+    using System.IO;
+    using System.Windows.Forms;
+
+    using global::ExportSQL.Properties;
+    using global::ExportSQL.Settings;
+
     public partial class WizardForm : Form
     {
         ExportSQL exp;
 
         public WizardForm()
         {
-            InitializeComponent();
-            InitializeComponentCustom();
+            this.InitializeComponent();
+            this.InitializeComponentCustom();
         }
 
         /// <summary>
@@ -21,211 +22,157 @@ namespace ExportSQL
         /// </summary>
         private void InitializeComponentCustom()
         {
-            exp = new ExportSQL();
+            this.exp = new ExportSQL();
         }
 
         private void export()
         {
-            if (viewCheckEdit.Checked || allCheckEdit.Checked)
+            this.progressBar1.Style = ProgressBarStyle.Marquee;
+            this.expButton.Visible = false;
+            this.progressPanel.Visible = true;
+            this.restartButton.Visible = false;
+            this.progressBar1.Visible = true;
+            if (this.oracleRadioButton.Checked)
             {
-                progressLabel.Text = "Estrazione delle viste...";
-                exp.ExtractViews();
+                this.exp.DbType = ExportSQL.DataBaseType.Oracle;
+            }
+            else
+            {
+                this.exp.DbType = ExportSQL.DataBaseType.SQLServer;
             }
 
-            if (procedureCheckEdit.Checked || allCheckEdit.Checked)
+            if (indeRadioButton.Checked)
             {
-                progressLabel.Text = "Estrazione delle procedure...";
-                exp.ExtractProcedures();
+                this.exp.ReadIndeBuild(this.INDEBuildFile.Text);
+            }
+            else
+            {
+                this.exp.readOtherText(this.OtherText.Text);
+            }
+           
+
+            if (this.viewCheckBox.Checked || this.allCheckBox.Checked)
+            {
+                this.progressLabel.Text = Resources.WizardForm_export_Estrazione_delle_viste;
+                this.exp.ExtractViews();
             }
 
-            if (functionCheckEdit.Checked || allCheckEdit.Checked)
+            if (this.procedureCheckBox.Checked || this.allCheckBox.Checked)
             {
-                progressLabel.Text = "Estrazione delle funzioni...";
-                exp.ExtractFunctions();
+                this.progressLabel.Text = Resources.WizardForm_export_Estrazione_delle_procedure;
+                this.exp.ExtractProcedures();
             }
 
-            if (triggerCheckEdit.Checked || allCheckEdit.Checked)
+            if (this.funzionCheckBox.Checked || this.allCheckBox.Checked)
             {
-                progressLabel.Text = "Estrazione dei trigger...";
-                exp.ExtractTriggers();
+                this.progressLabel.Text = Resources.WizardForm_export_Estrazione_delle_funzioni;
+                this.exp.ExtractFunctions();
             }
 
-            progressLabel.Text = "Salvataggio...";
-            exp.Export((ExportSQL.SaveMode)saveModeRadioGroup.EditValue, savePath.Text);
+            if (this.triggerCheckBox.Checked || this.allCheckBox.Checked)
+            {
+                this.progressLabel.Text = Resources.WizardForm_export_Estrazione_dei_trigger;
+                this.exp.ExtractTriggers();
+            }
 
-            progressLabel.Text = "Fine.";
-            wizardControl.SelectedPage = endPage;
+            if (this.mod1RadioButton.Checked)
+            {
+                this.exp.Export(ExportSQL.SaveMode.SingleFile, this.destTextBox.Text);
+            }
+            else if (this.mod2RadioButton.Checked)
+            {
+                this.exp.Export(ExportSQL.SaveMode.SingleFilePerType, this.destTextBox.Text);
+            }
+            else
+            {
+                this.exp.Export(ExportSQL.SaveMode.SingleFilePerObject, this.destTextBox.Text);
+            }
+
+            this.progressLabel.Text = Resources.WizardForm_export_Salvataggio;
+            
+            this.progressLabel.Text = Resources.WizardForm_export_Operazione_completata_con_successo;
+            this.progressBar1.Visible = false;
+
+            this.restartButton.Visible = true;
         }
 
-        private void wizardControl1_SelectedPageChanged(object sender, WizardPageChangedEventArgs e)
+        
+
+        
+        private bool validate()
         {
-            if (e.Page == INDESourcePage && INDEBuildFile.Text.Equals(string.Empty))
-            {
-                INDEBuildFile.Text = Settings.General.Default.DefaultInputFile;
-            }
-
-            if (e.Page == savePathPage && savePath.Text.Equals(string.Empty))
-            {
-                savePath.Text = Settings.General.Default.DefaultOutputPath;
-            }
-
-            if (e.Page == progressPage)
-            {
-                progressPage.AllowNext = false;
-                progressPage.AllowBack = false;
-                export();
-            }
-
-            if (e.Page == endPage)
-            {
-                endPage.AllowNext = false;
-                endPage.AllowBack = false;
-            }
-        }
-
-        private void wizardControl1_SelectedPageChanging(object sender, WizardPageChangingEventArgs e)
-        {
-            #region Forwards
-            if (e.PrevPage == sourceTypePage && e.Direction == Direction.Forward)
-            {
-                ExportSQL.SourceType type = (ExportSQL.SourceType)sourceTypeRadioGroup.EditValue;
-                switch (type)
-                {
-                    case ExportSQL.SourceType.Inde:
-                        e.Page = INDESourcePage;
-                        break;
-
-                    case ExportSQL.SourceType.Other:
-                        e.Page = otherSourcePage;
-                        break;
-
-                    default:
-                        throw new NotSupportedException(String.Format("{0} is not a valid source type!", type));
-                }
-            }
-
-            if (e.PrevPage == INDESourcePage && e.Direction == Direction.Forward)
-            {
-                exp.ReadIndeBuild(INDEBuildFile.Text);
-                if (exp.DbType == ExportSQL.DataBaseType.Unknown)
-                {
-                    e.Page = dataBaseTypePage;
-                }
-                else
-                {
-                    e.Page = objTypesPage;
-                }
-            }
-
-            if (e.PrevPage == otherSourcePage && e.Direction == Direction.Forward)
-            {
-                exp.readOtherText(OtherText.Text);
-                e.Page = dataBaseTypePage;
-            }
-
-            if (e.PrevPage == dataBaseTypePage && e.Direction == Direction.Forward)
-            {
-                exp.DbType = (ExportSQL.DataBaseType)dataBaseTypeRadioGroup.EditValue;
-                e.Page = objTypesPage;
-            }
-            #endregion
-
-            #region Backwards
-            if (e.PrevPage == otherSourcePage && e.Direction == Direction.Backward)
-            {
-                e.Page = sourceTypePage;
-            }
-
-            if (e.PrevPage == dataBaseTypePage && e.Direction == Direction.Backward)
-            {
-                e.Page = sourceTypePage;
-            }
-
-            if (e.PrevPage == objTypesPage && e.Direction == Direction.Backward)
-            {
-                e.Page = sourceTypePage;
-            }
-            #endregion
-        }
-
-        private void wizardControl_NextClick(object sender, WizardCommandButtonClickEventArgs e)
-        {
-            if (e.Page == objTypesPage &&
-                !allCheckEdit.Checked &&
-                !viewCheckEdit.Checked &&
-                !procedureCheckEdit.Checked &&
-                !functionCheckEdit.Checked &&
-                !triggerCheckEdit.Checked)
+            if (!this.allCheckBox.Checked &&
+                !this.viewCheckBox.Checked &&
+                !this.procedureCheckBox.Checked &&
+                !this.funzionCheckBox.Checked &&
+                !this.triggerCheckBox.Checked)
             {
                 MessageBox.Show(
-                    "Scegliere almeno un tipo di oggetto!",
-                    "Attenzione",
+                    Resources.WizardForm_validate_Scegliere_almeno_un_tipo_di_oggetto_,
+                    Resources.WizardForm_validate_Attenzione,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
 
-                e.Handled = true;
+                return false;
             }
 
-            if (e.Page == INDESourcePage && !File.Exists(INDEBuildFile.Text))
+            if (indeRadioButton.Checked && !File.Exists(this.INDEBuildFile.Text))
             {
                 MessageBox.Show(
-                    "Scegliere un file esistente e valido!",
-                    "Errore",
+                    Resources.WizardForm_validate_Scegliere_un_file_esistente_e_valido,
+                    Resources.WizardForm_validate_Errore,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
-                e.Handled = true;
+                return false;
             }
 
-            if (e.Page == savePathPage && !Directory.Exists(savePath.Text))
+            if (!Directory.Exists(this.destTextBox.Text))
             {
                 MessageBox.Show(
-                    "Scegliere una cartella esistente e valida!",
-                    "Errore",
+                    Resources.WizardForm_validate_Scegliere_una_cartella_esistente_e_valida,
+                    Resources.WizardForm_validate_Errore,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
-                e.Handled = true;
+                return false;
             }
+
+            return true;
         }
 
-        private void wizardControl_CancelClick(object sender, CancelEventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog();
 
             fd.Filter = @"Build INDE (*.ddl)|*.ddl|Tutti i file (*.*)|*.*";
-            fd.InitialDirectory = Settings.General.Default.DefaultInputFile;
+            fd.InitialDirectory = General.Default.DefaultInputFile;
             fd.Multiselect = false;
             fd.ValidateNames = true;
 
             fd.ShowDialog();
             if (!fd.FileName.Equals(string.Empty))
             {
-                INDEBuildFile.Text = fd.FileName;
+                this.INDEBuildFile.Text = fd.FileName;
+                this.destTextBox.Text = Path.GetDirectoryName(fd.FileName);
             }
         }
 
-        private void textEdit1_TextChanged(object sender, EventArgs e)
-        {
-            INDESourcePage.AllowNext = !INDEBuildFile.Text.Equals(string.Empty);
-        }
-
-        private void textEdit2_TextChanged(object sender, EventArgs e)
-        {
-            savePathPage.AllowNext = !savePath.Text.Equals(string.Empty);
-        }
 
         private void checkEdit5_CheckedChanged(object sender, EventArgs e)
         {
-            viewCheckEdit.Enabled = !allCheckEdit.Checked;
-            procedureCheckEdit.Enabled = !allCheckEdit.Checked;
-            functionCheckEdit.Enabled = !allCheckEdit.Checked;
-            triggerCheckEdit.Enabled = !allCheckEdit.Checked;
+            if (allCheckBox.Checked)
+            {
+                this.viewCheckBox.Checked = true;
+                this.procedureCheckBox.Checked = true;
+                this.funzionCheckBox.Checked = true;
+                this.triggerCheckBox.Checked = true;
+            }
+            this.viewCheckBox.Enabled = !this.allCheckBox.Checked;
+            this.procedureCheckBox.Enabled = !this.allCheckBox.Checked;
+            this.funzionCheckBox.Enabled = !this.allCheckBox.Checked;
+            this.triggerCheckBox.Enabled = !this.allCheckBox.Checked;
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -237,19 +184,13 @@ namespace ExportSQL
             fb.ShowDialog();
             if (!fb.SelectedPath.Equals(string.Empty))
             {
-                savePath.Text = fb.SelectedPath;
+                this.destTextBox.Text = fb.SelectedPath;
             }
-        }
-
-        private void restartButton_Click(object sender, EventArgs e)
-        {
-            InitializeComponentCustom();
-            wizardControl.SelectedPage = welcomePage;
         }
 
         private void INDEBuildFile_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
             {
                 e.Effect = DragDropEffects.All;
             } 
@@ -257,11 +198,47 @@ namespace ExportSQL
 
         private void INDEBuildFile_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                INDEBuildFile.Text = files[0];
+                this.INDEBuildFile.Text = files[0];
+                this.destTextBox.Text = Path.GetDirectoryName(files[0]);
             }
+        }
+
+        private void WizardForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void expButton_Click(object sender, EventArgs e)
+        {
+            if (this.validate())
+            {                
+                this.export();
+            }
+        }
+
+        private void indeRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                this.OtherText.Visible = false;
+            }
+        }
+
+        private void altroRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                this.OtherText.Visible = true;
+            }
+        }
+
+        private void restartButton_Click(object sender, EventArgs e)
+        {
+            this.progressPanel.Visible = false;
+            this.expButton.Visible = true;
         }
     }
 }
