@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WizardForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.OtherText = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.altroRadioButton = new System.Windows.Forms.RadioButton();
             this.indeRadioButton = new System.Windows.Forms.RadioButton();
@@ -55,7 +56,6 @@
             this.restartButton = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.OtherText = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,6 +77,16 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Origine";
+            // 
+            // OtherText
+            // 
+            this.OtherText.Location = new System.Drawing.Point(122, 19);
+            this.OtherText.Multiline = true;
+            this.OtherText.Name = "OtherText";
+            this.OtherText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.OtherText.Size = new System.Drawing.Size(426, 64);
+            this.OtherText.TabIndex = 54;
+            this.OtherText.Visible = false;
             // 
             // button2
             // 
@@ -355,16 +365,6 @@
             this.progressBar1.Size = new System.Drawing.Size(292, 23);
             this.progressBar1.TabIndex = 57;
             // 
-            // OtherText
-            // 
-            this.OtherText.Location = new System.Drawing.Point(122, 19);
-            this.OtherText.Multiline = true;
-            this.OtherText.Name = "OtherText";
-            this.OtherText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.OtherText.Size = new System.Drawing.Size(426, 64);
-            this.OtherText.TabIndex = 54;
-            this.OtherText.Visible = false;
-            // 
             // WizardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +377,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "WizardForm";
