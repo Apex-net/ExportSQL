@@ -114,4 +114,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="WizardForm_validate_Scegliere_almeno_un_tipo_di_oggetto_" xml:space="preserve">
+    <value>Scegliere almeno un tipo di oggetto!</value>
+  </data>
+  <data name="WizardForm_validate_Scegliere_un_file_esistente_e_valido" xml:space="preserve">
+    <value>Scegliere un file esistente e valido!</value>
+  </data>
+  <data name="WizardForm_validate_Attenzione" xml:space="preserve">
+    <value>Attenzione</value>
+  </data>
+  <data name="WizardForm_validate_Errore" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="WizardForm_validate_Scegliere_una_cartella_esistente_e_valida" xml:space="preserve">
+    <value>Scegliere una cartella esistente e valida!</value>
+  </data>
+  <data name="WizardForm_export_Estrazione_delle_viste___" xml:space="preserve">
+    <value>Estrazione delle viste...</value>
+  </data>
+  <data name="WizardForm_export_Estrazione_delle_viste" xml:space="preserve">
+    <value>Estrazione delle viste...</value>
+  </data>
+  <data name="WizardForm_export_Estrazione_delle_procedure" xml:space="preserve">
+    <value>Estrazione delle procedure...</value>
+  </data>
+  <data name="WizardForm_export_Estrazione_delle_funzioni" xml:space="preserve">
+    <value>Estrazione delle funzioni...</value>
+  </data>
+  <data name="WizardForm_export_Estrazione_dei_trigger" xml:space="preserve">
+    <value>Estrazione dei trigger...</value>
+  </data>
+  <data name="WizardForm_export_Salvataggio" xml:space="preserve">
+    <value>Salvataggio...</value>
+  </data>
+  <data name="WizardForm_export_Operazione_completata_con_successo" xml:space="preserve">
+    <value>Operazione completata con successo</value>
+  </data>
 </root>

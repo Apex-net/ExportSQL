@@ -49,7 +49,7 @@ namespace ExportSQL
                 }
                 else
                 {
-                    throw new Exception(String.Format("\"{0}\" DataBase Type is not supported yet!", dbType));
+                    throw new Exception(string.Format("\"{0}\" DataBase Type is not supported yet!", dbType));
                 }
             }
             else

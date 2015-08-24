@@ -59,5 +59,113 @@ namespace ExportSQL.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estrazione dei trigger....
+        /// </summary>
+        internal static string WizardForm_export_Estrazione_dei_trigger {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Estrazione_dei_trigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estrazione delle funzioni....
+        /// </summary>
+        internal static string WizardForm_export_Estrazione_delle_funzioni {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Estrazione_delle_funzioni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estrazione delle procedure....
+        /// </summary>
+        internal static string WizardForm_export_Estrazione_delle_procedure {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Estrazione_delle_procedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estrazione delle viste....
+        /// </summary>
+        internal static string WizardForm_export_Estrazione_delle_viste {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Estrazione_delle_viste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estrazione delle viste....
+        /// </summary>
+        internal static string WizardForm_export_Estrazione_delle_viste___ {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Estrazione_delle_viste___", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operazione completata con successo.
+        /// </summary>
+        internal static string WizardForm_export_Operazione_completata_con_successo {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Operazione_completata_con_successo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salvataggio....
+        /// </summary>
+        internal static string WizardForm_export_Salvataggio {
+            get {
+                return ResourceManager.GetString("WizardForm_export_Salvataggio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attenzione.
+        /// </summary>
+        internal static string WizardForm_validate_Attenzione {
+            get {
+                return ResourceManager.GetString("WizardForm_validate_Attenzione", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Errore.
+        /// </summary>
+        internal static string WizardForm_validate_Errore {
+            get {
+                return ResourceManager.GetString("WizardForm_validate_Errore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scegliere almeno un tipo di oggetto!.
+        /// </summary>
+        internal static string WizardForm_validate_Scegliere_almeno_un_tipo_di_oggetto_ {
+            get {
+                return ResourceManager.GetString("WizardForm_validate_Scegliere_almeno_un_tipo_di_oggetto_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scegliere un file esistente e valido!.
+        /// </summary>
+        internal static string WizardForm_validate_Scegliere_un_file_esistente_e_valido {
+            get {
+                return ResourceManager.GetString("WizardForm_validate_Scegliere_un_file_esistente_e_valido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scegliere una cartella esistente e valida!.
+        /// </summary>
+        internal static string WizardForm_validate_Scegliere_una_cartella_esistente_e_valida {
+            get {
+                return ResourceManager.GetString("WizardForm_validate_Scegliere_una_cartella_esistente_e_valida", resourceCulture);
+            }
+        }
     }
 }
